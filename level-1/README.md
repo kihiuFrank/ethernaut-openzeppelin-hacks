@@ -1,63 +1,13 @@
 # Level 1: Fallback
 
-This is the level 1 of [Ethernaut](https://ethernaut.openzeppelin.com/) game.
-
-## Pre-requisites
-
-- Sending transactions using [web3.js](https://ethereum.stackexchange.com/questions/53094/sending-ether-via-contract-instance) to a contract and to a payable function
-- [Conversion between units ether & wei](https://web3js.readthedocs.io/en/v1.5.2/web3-utils.html#towei)
-- Solidity contract [fallback](https://ethereum.stackexchange.com/questions/81994/what-is-the-receive-keyword-in-solidity/81995) function
+This is the level 1 of Ethernaut
 
 ## Hack
 
 Given contract:
 
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
-
-import '@openzeppelin/contracts/math/SafeMath.sol';
-
-contract Fallback {
-
-  using SafeMath for uint256;
-  mapping(address => uint) public contributions;
-  address payable public owner;
-
-  constructor() public {
-    owner = msg.sender;
-    contributions[msg.sender] = 1000 * (1 ether);
-  }
-
-  modifier onlyOwner {
-        require(
-            msg.sender == owner,
-            "caller is not the owner"
-        );
-        _;
-    }
-
-  function contribute() public payable {
-    require(msg.value < 0.001 ether);
-    contributions[msg.sender] += msg.value;
-    if(contributions[msg.sender] > contributions[owner]) {
-      owner = msg.sender;
-    }
-  }
-
-  function getContribution() public view returns (uint) {
-    return contributions[msg.sender];
-  }
-
-  function withdraw() public onlyOwner {
-    owner.transfer(address(this).balance);
-  }
-
-  receive() external payable {
-    require(msg.value > 0 && contributions[msg.sender] > 0);
-    owner = msg.sender;
-  }
-}
+```
+Fallback.sol
 ```
 
 and `contract` methods & `web3.js` functions injected into console.
@@ -109,7 +59,7 @@ await sendTransaction({
 });
 ```
 
-Boom! We claimed ownership of the contract!
+And now we claimed ownership of the contract!
 You can verify that `owner` is same address as `player` by:
 
 ```javascript

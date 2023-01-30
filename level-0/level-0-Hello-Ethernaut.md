@@ -1,16 +1,9 @@
 # Level 0: Hello Ethernaut
 
-This is the level 0 of [Ethernaut](https://ethernaut.openzeppelin.com/) game.
-
-## Pre-requisites
-
-- Basics of [web3js](https://web3js.readthedocs.io/en/v1.5.2/getting-started.html)
+This is the level 0 of Ethernaut
 
 ## Hack
 
-I assume you've read instructions of the level 0 and acquired test ether. The level contract methods are injected right into our browser console, so we can start calling methods.
-
-Let's start.
 The instructions asks to call this method in console:
 
 ```javascript
