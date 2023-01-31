@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
+// to be run on REMIX IDE so ignore the error
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract Fallback {
